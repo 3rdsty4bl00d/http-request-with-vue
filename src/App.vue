@@ -68,7 +68,7 @@
                     the second parameter
                     is the data i actually want to pass
                */
-               this.resource.save({}, );
+               this.resource.save({}, this.user);
             },
 
             /*
