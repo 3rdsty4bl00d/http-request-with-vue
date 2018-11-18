@@ -68,7 +68,27 @@
                     the second parameter
                     is the data i actually want to pass
                */
-               this.resource.save({}, this.user);
+              /* 
+                    the following code 
+                    is more flexible than the upper code
+                    also called default action
+              */
+               /* this.resource.save({}, this.user); */
+               /* 
+                    this will create a new
+                    alternative file
+                    as mentioned below
+                    with this the data is posted in the database
+               */
+               this.resource.saveAlt(this.user);
+               /* 
+                    $http.post method is 
+                    absolutely fine
+                    but using resource 
+                    method, gives more flexibility
+                    and it is also the 
+                    alternative to $http.post
+               */
             },
 
             /*
@@ -126,7 +146,30 @@
                 in this case
                 vue-resource
             */
-            this.resource = this.$resource('data.json');
+           /* 
+                creating an object
+           */
+          /* 
+                the following code
+                will help to post new alternative.json
+                folder(like) 
+                and post the user data
+                in there
+          */
+           const customActions = {
+               saveAlt: {
+                   method: 'POST', url: 'alternative.json'
+               }
+           };
+           /* 
+                the second parameter is used 
+                to pass the variable into the url
+
+                the third parameter 
+                passes the object created inside customActions
+                constant value
+           */
+            this.resource = this.$resource('data.json', {}, customActions);
         }
     }
 
